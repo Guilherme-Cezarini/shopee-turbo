@@ -1,0 +1,61 @@
+{{ define "index" }}
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+          {{if . }}
+            {{range $val := .}}
+              <div class="alert alert-danger" role="alert">
+                {{$val}}
+              </div>
+            {{ end }}
+          {{ end }}
+    </div>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+      <div class="login-container">
+        <h2 class="text-center">Cadastro</h2>
+        <form method="post" action="/sign-up/create">
+            <div class="row">
+                <div class="col">
+                    <input type="name" class="form-control" id="name" placeholder="Digite seu nome...">
+                </div>
+                <div class="col">
+                    <input type="phone" class="form-control" id="phone" placeholder="Digite seu telefone...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="cpf" class="form-control" id="cpf" placeholder="Digite seu CPF...">
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu email...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha...">
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" id="password_confirmation" placeholder="Confirmação de senha...">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Criar</button>
+        </form>
+      </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{{ end }}

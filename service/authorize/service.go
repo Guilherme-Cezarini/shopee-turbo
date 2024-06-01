@@ -10,6 +10,7 @@ type authorizeService struct {
 }
 
 type AuthorizeService interface {
+	GenerateUrlToMLAuthorization() string
 }
 
 func NewService() AuthorizeService {
