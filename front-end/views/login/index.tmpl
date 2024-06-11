@@ -1,0 +1,46 @@
+{{ define "index" }}
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+          {{if .Error }}
+            {{range $val := .Error}}
+              <div class="alert alert-danger" role="alert">
+                {{$val}}
+              </div>
+            {{ end }}
+          {{ end }}
+    </div>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+      <div class="login-container">
+        <h2 class="text-center">Login</h2>
+        <form method="post" action="/sign-in">
+            {{ .csrfField }}
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu email..." name="email" {{ if .Login.Email }} value="{{ .Login.Email }}" {{ end }}>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite sua senha..." name="password" {{ if .Login.Password }} value="{{ .Login.Password }}"" {{ end }}>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{{ end }}
